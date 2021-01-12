@@ -1,5 +1,5 @@
 import React from 'react'
-import { Wrapper, OpeningButton, CloseIcon, OpeningIcon, CloseButton, DisappearingWrapper, DisappearingOpeningButton, Content } from './styledComponents.js'
+import { Wrapper, OpeningButton, CloseIcon, OpeningIcon, CloseButton, DisappearingWrapper, DisappearingOpeningButton, Content } from './styled-components.js'
 
 class SideMenu extends React.Component {
   constructor(props) {
