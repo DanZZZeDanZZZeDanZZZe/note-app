@@ -1,9 +1,10 @@
 import SideMenu from "../SideMenu"
+import { Nav } from "./styled-components"
 
 function NavSideMenu(props) {
   return (
     <SideMenu>
-      <nav>
+      <Nav>
         <ul>
           {props.children.map((link, index) => (
             <li key={index}>
@@ -11,7 +12,7 @@ function NavSideMenu(props) {
             </li>
           ))} 
         </ul>
-      </nav>
+      </Nav>
     </SideMenu>
   )
 }

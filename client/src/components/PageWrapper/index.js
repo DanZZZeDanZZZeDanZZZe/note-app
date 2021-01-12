@@ -1,11 +1,13 @@
-import styled from 'styled-components';
+import { ContentSpace, Wrapper } from "./styled-components"
 
-const PageWrapper = styled.div`
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-`
+function PageWrapper(props) {
+  return (
+    <Wrapper>
+      <ContentSpace>
+        {props.children}
+      </ContentSpace>
+    </Wrapper>
+  )
+}
 
 export default PageWrapper
