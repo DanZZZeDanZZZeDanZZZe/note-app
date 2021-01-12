@@ -2,7 +2,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  Redirect
 } from "react-router-dom";
 
 import NavSideMenu from "./components/NavSideMenu";
@@ -18,6 +19,9 @@ function App() {
       </NavSideMenu>
 
       <Switch>
+        <Route path="/" exact>
+          <Redirect to="/notes" />
+        </Route>
         <Route path="/notes">
           <NotesPage/>
         </Route>
