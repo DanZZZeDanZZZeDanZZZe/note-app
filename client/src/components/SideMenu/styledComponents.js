@@ -1,7 +1,7 @@
 import styled, { keyframes } from "styled-components";
 import { fadeInLeft, fadeIn } from 'react-animations';
 import { IoIosArrowDropright, IoIosCloseCircleOutline } from 'react-icons/io';
-import { mdSize } from "../../css-сonstants/screen-breakpoints";
+import { mdSize, smSize } from "../../css-сonstants/screen-breakpoints";
 
 const wrapperWidth = '15rem'
 const buttonWidth = '2.5rem'
@@ -28,7 +28,7 @@ const  Wrapper = styled.div`
     word-wrap: break-word; 
   }
 
-  @media only screen and (max-width: ${mdSize}) {
+  @media only screen and (max-width: ${smSize}) {
     &::after {
       content: '';
       position: fixed;
@@ -45,12 +45,6 @@ const  Wrapper = styled.div`
 const DisappearingWrapper = styled(Wrapper)`
   animation-direction: reverse;
   animation-fill-mode: forwards;
-
-  @media only screen and (max-width: ${mdSize}) {
-    &::after {
-      content: none;
-    }
-  }
 `
 
 const CleanedButton = styled.button`
