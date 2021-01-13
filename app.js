@@ -4,7 +4,7 @@ const morgan = require('morgan')
 const groupsRouter = require('./routes/groupsRouter')
 const notesRouter = require('./routes/notesRouter')
 
-const app = express(morgan('dev'))
+const app = express()
 
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'))
