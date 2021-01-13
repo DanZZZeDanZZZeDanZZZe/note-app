@@ -6,6 +6,7 @@ const {
   deleteGroup,
   changeGroup,
   getGroups,
+  getLengthOfGroupsCollection,
 } = require('../controllers/groupsController')
 
 const groupsRouter = express.Router()
@@ -14,6 +15,8 @@ groupsRouter.route('/').post(сerateGroup)
 
 groupsRouter.route('/list').get(getGroups)
 
-groupsRouter.route('/:id').get(getGroup).delete(deleteGroup).put(changeGroup)
+groupsRouter.route('/length').get(getLengthOfGroupsCollection)
+
+groupsRouter.route('/:title').get(getGroup).delete(deleteGroup).put(changeGroup)
 
 module.exports = groupsRouter

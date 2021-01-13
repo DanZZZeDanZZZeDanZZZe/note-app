@@ -4,11 +4,13 @@ const GroupSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
+    unique: true,
   },
-  color: {
-    type: String,
+  date: {
+    type: Date,
     required: true,
   },
+  color: String,
 })
 
 const Group = mongoose.model('Groups', GroupSchema)
