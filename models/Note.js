@@ -10,10 +10,7 @@ const NoteSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
-  group: {
-    type: mongoose.ObjectId,
-    required: true,
-  },
+  group: mongoose.ObjectId,
 })
 
 const Note = mongoose.model('notes', NoteSchema)
