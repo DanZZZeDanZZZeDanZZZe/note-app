@@ -19,10 +19,10 @@ exports.сerateGroup = async (req, res) => {
 
 exports.getGroup = async (req, res) => {
   try {
-    const { title } = req.params
-    if (!title) throw new Error('Request does not contain title')
+    const { searchTitle } = req.params
+    if (!searchTitle) throw new Error('Request does not contain title')
 
-    const group = await Group.find({ title })
+    const group = await Group.find({ searchTitle })
 
     res.status(200).json(group)
   } catch (e) {
@@ -36,8 +36,8 @@ exports.getGroups = async (req, res) => {
 
     const groups = await Group.find({})
       .sort({ date: 'desc' })
-      .skip(+start)
-      .limit(+limit)
+      .skip(start)
+      .limit(limit)
 
     res.status(200).json(groups)
   } catch (e) {
@@ -47,10 +47,10 @@ exports.getGroups = async (req, res) => {
 
 exports.deleteGroup = async (req, res) => {
   try {
-    const { title } = req.params
-    if (!title) throw new Error('Request does not contain title')
+    const { searchTitle } = req.params
+    if (!searchTitle) throw new Error('Request does not contain title')
 
-    await Group.remove({ title })
+    await Group.remove({ searchTitle })
 
     res.status(200).json({ message: 'Successful deletion' })
   } catch (e) {
@@ -60,10 +60,10 @@ exports.deleteGroup = async (req, res) => {
 
 exports.changeGroup = async (req, res) => {
   try {
-    const { title: oldTitle } = req.params
-    if (!oldTitle) throw new Error('Request does not contain title')
+    const { searchTitle } = req.params
+    if (!searchTitle) throw new Error('Request does not contain title')
 
-    const oldGroup = await Group.findOne({ title: oldTitle })
+    const oldGroup = await Group.findOne({ title: searchTitle })
     if (!oldGroup)
       throw new Error('The entry with the specified title does not exist')
 
