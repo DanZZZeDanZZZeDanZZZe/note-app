@@ -9,14 +9,27 @@ const {
   getLengthOfGroupsCollection,
 } = require('../controllers/groupsController')
 
+const {
+  createGroupDataHandler,
+} = require('../processing/createGroupDataHandler')
+const {
+  createRangeDataHandler,
+} = require('../processing/createRangeDataHandler')
+
 const groupsRouter = express.Router()
 
-groupsRouter.route('/').post(сerateGroup)
+groupsRouter
+  .route('/')
+  .post(createGroupDataHandler({ optional: ['color'] }), сerateGroup)
 
-groupsRouter.route('/list').get(getGroups)
+groupsRouter.route('/list').get(createRangeDataHandler(), getGroups)
 
 groupsRouter.route('/length').get(getLengthOfGroupsCollection)
 
-groupsRouter.route('/:title').get(getGroup).delete(deleteGroup).put(changeGroup)
+groupsRouter
+  .route('/:searchTitle')
+  .get(getGroup)
+  .delete(deleteGroup)
+  .put(createGroupDataHandler({ optional: ['title', 'color'] }), changeGroup)
 
 module.exports = groupsRouter
