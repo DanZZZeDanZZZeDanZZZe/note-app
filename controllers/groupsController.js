@@ -22,7 +22,7 @@ exports.getGroup = async (req, res) => {
     const { searchTitle } = req.params
     if (!searchTitle) throw new Error('Request does not contain title')
 
-    const group = await Group.find({ searchTitle })
+    const group = await Group.find({ title: searchTitle })
 
     res.status(200).json(group)
   } catch (e) {
