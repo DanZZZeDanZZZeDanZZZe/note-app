@@ -1,6 +1,5 @@
 const dotenv = require('dotenv')
 const dotenvExpand = require('dotenv-expand')
-
 const connectDb = require('./db')
 const app = require('./app')
 
