@@ -3,16 +3,16 @@ import {
   Switch,
   Route,
   Link,
-  Redirect
-} from "react-router-dom";
+  Redirect,
+} from 'react-router-dom'
 
-import NavSideMenu from "./components/NavSideMenu";
-import NotesPage from "./pages/NotesPage";
-import GroupsPage from "./pages/GroupsPage";
+import NavSideMenu from './components/NavSideMenu'
+import NotesPage from './pages/NotesPage'
+import GroupsPage from './pages/GroupsPage'
 
 function App() {
   return (
-    <Router>
+    <Router basename="/client/build">
       <NavSideMenu>
         <Link to="/notes">Notes</Link>
         <Link to="/goups">Groups</Link>
@@ -23,10 +23,10 @@ function App() {
           <Redirect to="/notes" />
         </Route>
         <Route path="/notes">
-          <NotesPage/>
+          <NotesPage />
         </Route>
         <Route path="/goups">
-          <GroupsPage/>
+          <GroupsPage />
         </Route>
       </Switch>
     </Router>
