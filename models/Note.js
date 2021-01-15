@@ -13,6 +13,6 @@ const NoteSchema = new mongoose.Schema({
   group: mongoose.ObjectId,
 })
 
-const Note = mongoose.model('notes', NoteSchema)
+const Note = mongoose.model('Note', NoteSchema)
 
 module.exports = Note
