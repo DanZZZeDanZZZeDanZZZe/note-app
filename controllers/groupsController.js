@@ -34,6 +34,13 @@ exports.getGroups = async (req, res) => {
   try {
     const { start, limit } = req.query
 
+    const count = await Group.count({})
+    if (start >= count) {
+      res
+        .status(400)
+        .json({ message: 'The start parameter is longer than the collection' })
+    }
+
     const groups = await Group.find({})
       .sort({ date: 'desc' })
       .skip(start)

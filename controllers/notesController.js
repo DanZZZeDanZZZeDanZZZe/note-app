@@ -29,6 +29,13 @@ exports.getNotes = async (req, res) => {
   try {
     const { start, limit } = req.query
 
+    const count = await Note.count({})
+    if (start >= count) {
+      res
+        .status(400)
+        .json({ message: 'The start parameter is longer than the collection' })
+    }
+
     const notes = await Note.find({})
       .sort({ date: 'desc' })
       .skip(start)
