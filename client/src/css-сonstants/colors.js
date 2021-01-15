@@ -1,0 +1,5 @@
+export const ghostWhite = '#EBE9ED'
+export const bisque = '#FFE2C2'
+export const eggplant = '#675068'
+export const maroonX11 = '#A53860'
+export const oceanGreen = '#61C9A8'
