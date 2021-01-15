@@ -38,8 +38,13 @@ exports.getGroups = async (req, res) => {
       .sort({ date: 'desc' })
       .skip(start)
       .limit(limit)
+      .populate('notes')
 
-    res.status(200).json(groups)
+    const groupWithNotes = groups.map((group) => {
+      return { ...group.toObject({ virtuals: true }) }
+    })
+
+    res.status(200).json(groupWithNotes)
   } catch (e) {
     resErrorMessage(res, e)
   }
