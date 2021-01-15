@@ -13,6 +13,12 @@ const GroupSchema = new mongoose.Schema({
   color: String,
 })
 
-const Group = mongoose.model('Groups', GroupSchema)
+GroupSchema.virtual('notes', {
+  ref: 'Note',
+  localField: '_id',
+  foreignField: 'group',
+})
+
+const Group = mongoose.model('Group', GroupSchema)
 
 module.exports = Group
