@@ -1,10 +1,4 @@
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  Redirect,
-} from 'react-router-dom'
+import { Switch, Route, Link, Redirect, BrowserRouter } from 'react-router-dom'
 
 import NavSideMenu from './components/NavSideMenu'
 import NotesPage from './pages/NotesPage'
@@ -12,7 +6,7 @@ import GroupsPage from './pages/GroupsPage'
 
 function App() {
   return (
-    <Router basename="/client/build">
+    <BrowserRouter>
       <NavSideMenu>
         <Link to="/notes">Notes</Link>
         <Link to="/goups">Groups</Link>
@@ -29,7 +23,7 @@ function App() {
           <GroupsPage />
         </Route>
       </Switch>
-    </Router>
+    </BrowserRouter>
   )
 }
 
