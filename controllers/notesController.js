@@ -29,7 +29,7 @@ exports.getNotes = async (req, res) => {
   try {
     const { start, limit } = req.query
 
-    const count = await Note.count({})
+    const count = await Note.countDocuments({})
     if (start >= count) {
       res
         .status(400)
@@ -97,7 +97,7 @@ exports.changeNote = async (req, res) => {
 
 exports.getLengthOfNotesCollection = async (req, res) => {
   try {
-    const count = await Note.count({})
+    const count = await Note.countDocuments({})
     res.status(200).json({ count })
   } catch (e) {
     resErrorMessage(res, e)

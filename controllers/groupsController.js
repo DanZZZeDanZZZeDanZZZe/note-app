@@ -34,7 +34,7 @@ exports.getGroups = async (req, res) => {
   try {
     const { start, limit } = req.query
 
-    const count = await Group.count({})
+    const count = await Group.countDocuments({})
     if (start >= count) {
       res
         .status(400)
@@ -100,7 +100,7 @@ exports.changeGroup = async (req, res) => {
 
 exports.getLengthOfGroupsCollection = async (req, res) => {
   try {
-    const count = await Group.count({})
+    const count = await Group.countDocuments({})
     res.status(200).json({ count })
   } catch (e) {
     resErrorMessage(res, e)
