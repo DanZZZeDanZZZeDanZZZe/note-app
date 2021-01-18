@@ -1,24 +1,28 @@
-import { mdSize, smSize, lgSize } from "../../css-сonstants/screen-breakpoints";
-import { ghostWhite } from "../../css-сonstants/colors";
-import styled from "styled-components"
+import { mdSize, smSize, lgSize } from '../../css-сonstants/screen-breakpoints'
+import { ghostWhite } from '../../css-сonstants/colors'
+import styled from 'styled-components'
 
 const Nav = styled.div`
   & ul {
     margin: 1rem 0;
-    padding: 0
+    padding: 0;
   }
 
   & li {
     list-style-type: none;
-    padding: .5rem 0;
-    border-radius: .5rem;
+    border-radius: 0.5rem;
+    &:hover {
+      cursor: pointer;
+      opacity: 0.9;
+    }
   }
 
   & a {
     display: inline-block;
     width: 100%;
+    height: 100%;
     text-align: center;
-    text-decoration: none; 
+    text-decoration: none;
     color: inherit;
   }
 
@@ -26,25 +30,30 @@ const Nav = styled.div`
     & li {
       margin-top: 1rem;
       font-size: 1.2rem;
-      padding: 1rem 0;
+
       background-color: ${ghostWhite};
       color: black;
+    }
+
+    & a {
+      padding: 1rem 0;
     }
   }
 
   @media only screen and (min-width: ${lgSize}) {
     & li {
       margin-top: 1rem;
-      transition: all .1s;
+      transition: all 0.1s;
 
       &:hover {
         background-color: ${ghostWhite};
         color: black;
-        cursor: pointer;
       }
+    }
+
+    & a {
+      padding: 0.5rem 0;
     }
   }
 `
-export {
-  Nav
-}
+export { Nav }

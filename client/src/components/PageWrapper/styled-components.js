@@ -1,11 +1,15 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
-import { smSize, lgSize } from "../../css-сonstants/screen-breakpoints";
-import { ghostWhite, oceanGreen } from "../../css-сonstants/colors";
-import { sideMenuBigWidth, sideMenuSmallWidth } from '../../css-сonstants/dimensions';
-import { materialShadow3 } from '../../css-сonstants/shadows';
+import { smSize, lgSize } from '../../css-сonstants/screen-breakpoints'
+import { ghostWhite, oceanGreen } from '../../css-сonstants/colors'
+import {
+  sideMenuBigWidth,
+  sideMenuSmallWidth,
+} from '../../css-сonstants/dimensions'
+import { materialShadow3 } from '../../css-сonstants/shadows'
 
 const Wrapper = styled.main`
+  box-sizing: border-box;
   width: 100%;
   height: 100vh;
   min-height: 100vh;
@@ -35,7 +39,4 @@ const ContentSpace = styled.div`
   box-shadow: ${materialShadow3};
 `
 
-export {
-  Wrapper,
-  ContentSpace
-}
+export { Wrapper, ContentSpace }
