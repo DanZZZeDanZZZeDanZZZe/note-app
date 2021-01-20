@@ -1,9 +1,10 @@
-import PageWrapper from "../../components/PageWrapper";
+import GridOfCards from '../../components/GridOfCards'
+import PageWrapper from '../../components/PageWrapper'
 
 function NotesPage() {
   return (
     <PageWrapper>
-      <h3>notes</h3>
+      <GridOfCards cardContent="notes" loadingLimit={5} />
     </PageWrapper>
   )
 }
