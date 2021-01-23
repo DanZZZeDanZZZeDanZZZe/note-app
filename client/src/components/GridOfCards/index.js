@@ -8,8 +8,8 @@ import CardGroup from '../CardGroup'
 
 class GridOfCards extends React.Component {
   render() {
-    const { routeForContent, loadingLimit: limit } = this.props
-    const url = `api/${routeForContent}/length`
+    const { routeForContent, loadingLimit: limit, param } = this.props
+    const url = `api/${routeForContent}/length/${param || ''}`
 
     return (
       <>
@@ -35,7 +35,8 @@ class GridOfCards extends React.Component {
 
 GridOfCards.propTypes = {
   loadingLimit: PropTypes.number.isRequired,
-  routeForContent: PropTypes.oneOf(['groups', 'notes']).isRequired,
+  routeForContent: PropTypes.oneOf(['groups', 'notes', 'groups/notes'])
+    .isRequired,
 }
 
 export default GridOfCards

@@ -13,11 +13,12 @@ function CardGroup(props) {
     range: { start, end },
     routeForContent,
     cardType,
+    param,
   } = props
 
   const type = cardType || `for${capitalize(routeForContent)}`
   const basename = `/api/${routeForContent}/list`
-  const url = `${basename}?start=${start}&limit=${limit}`
+  const url = `${basename}/${param || ''}?start=${start}&limit=${limit}`
   const length = end - start + 1
 
   const renderContent = (currentData, error) => {
