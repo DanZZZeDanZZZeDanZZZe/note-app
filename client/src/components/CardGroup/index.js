@@ -11,12 +11,12 @@ function CardGroup(props) {
   const {
     loadingLimit: limit,
     range: { start, end },
-    cardContent,
+    routeForContent,
     cardType,
   } = props
 
-  const type = cardType || `for${capitalize(cardContent)}`
-  const basename = `/api/${cardContent}/list`
+  const type = cardType || `for${capitalize(routeForContent)}`
+  const basename = `/api/${routeForContent}/list`
   const url = `${basename}?start=${start}&limit=${limit}`
   const length = end - start + 1
 
@@ -47,7 +47,7 @@ CardGroup.propTypes = {
     start: PropTypes.number.isRequired,
     end: PropTypes.number.isRequired,
   }),
-  cardContent: PropTypes.oneOf(['groups', 'notes']).isRequired,
+  routeForContent: PropTypes.oneOf(['groups', 'notes']).isRequired,
 }
 
 export default CardGroup

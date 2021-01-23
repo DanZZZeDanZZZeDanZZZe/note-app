@@ -4,7 +4,7 @@ import PageWrapper from '../../components/PageWrapper'
 function NotesPage() {
   return (
     <PageWrapper>
-      <GridOfCards cardContent="notes" loadingLimit={5} />
+      <GridOfCards routeForContent="notes" loadingLimit={5} />
     </PageWrapper>
   )
 }

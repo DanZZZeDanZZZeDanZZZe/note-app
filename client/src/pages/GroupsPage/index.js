@@ -4,7 +4,7 @@ import PageWrapper from '../../components/PageWrapper'
 function GroupsPage() {
   return (
     <PageWrapper>
-      <GridOfCards cardContent="groups" loadingLimit={5} />
+      <GridOfCards routeForContent="groups" loadingLimit={5} />
     </PageWrapper>
   )
 }
