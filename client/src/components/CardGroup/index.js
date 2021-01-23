@@ -9,12 +9,18 @@ function CardGroup(props) {
   }
 
   const {
-    limit,
+    loadingLimit: limit,
     range: { start, end },
     cardContent,
+    cardType,
   } = props
 
-  const renderContent = (length, currentData, error) => {
+  const type = cardType || `for${capitalize(cardContent)}`
+  const basename = `/api/${cardContent}/list`
+  const url = `${basename}?start=${start}&limit=${limit}`
+  const length = end - start + 1
+
+  const renderContent = (currentData, error) => {
     let isReceived = false
     if (currentData) {
       if (!(currentData instanceof Array)) throwError()
@@ -23,28 +29,20 @@ function CardGroup(props) {
 
     return new Array(length).fill(null).map((_, i) => {
       const data = isReceived ? currentData[i] : null
-      return (
-        <Card
-          {...{ data, error, type: `for${capitalize(cardContent)}` }}
-          key={i}
-        />
-      )
+
+      return <Card {...{ data, error, type }} key={i} />
     })
   }
 
-  const basename = `/api/${cardContent}/list`
-  const url = `${basename}?start=${start}&limit=${limit}`
-  const length = end - start + 1
-
   return (
     <DataLoader {...{ url }}>
-      {(data, error) => renderContent(length, data, error)}
+      {(data, error) => renderContent(data, error)}
     </DataLoader>
   )
 }
 
 CardGroup.propTypes = {
-  limit: PropTypes.number.isRequired,
+  loadingLimit: PropTypes.number.isRequired,
   range: PropTypes.shape({
     start: PropTypes.number.isRequired,
     end: PropTypes.number.isRequired,

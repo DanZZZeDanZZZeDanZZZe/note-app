@@ -21,7 +21,7 @@ class GridOfCards extends React.Component {
               return (
                 <Grid>
                   {ranges.map((range, i) => (
-                    <CardGroup key={i} {...{ range, limit, cardContent }} />
+                    <CardGroup key={i} {...{ range, ...this.props }} />
                   ))}
                 </Grid>
               )
