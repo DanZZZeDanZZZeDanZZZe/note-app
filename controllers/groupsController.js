@@ -1,4 +1,5 @@
 const Group = require('../models/Group')
+const Note = require('../models/Note')
 const resErrorMessage = require('./utils/resErrorMessage')
 
 exports.сerateGroup = async (req, res) => {
@@ -101,6 +102,36 @@ exports.changeGroup = async (req, res) => {
 exports.getLengthOfGroupsCollection = async (req, res) => {
   try {
     const count = await Group.countDocuments({})
+    res.status(200).json({ count })
+  } catch (e) {
+    resErrorMessage(res, e)
+  }
+}
+
+exports.getNotesInGroup = async (req, res) => {
+  try {
+    const { searchTitle } = req.params
+    const { start, limit } = req.query
+    if (!searchTitle) throw new Error('Request does not contain title')
+
+    const group = await Group.findOne({ title: searchTitle })
+    const notes = await Note.find({ group: group.id })
+      .sort({ date: 'desc' })
+      .limit(limit)
+      .skip(start)
+
+    res.status(200).json(notes)
+  } catch (e) {
+    resErrorMessage(res, e)
+  }
+}
+
+exports.getLengthOfNotesInGroupCollection = async (req, res) => {
+  try {
+    const { searchTitle } = req.params
+    const group = await Group.findOne({ title: searchTitle })
+    const count = await Note.countDocuments({ group: group.id })
+
     res.status(200).json({ count })
   } catch (e) {
     resErrorMessage(res, e)

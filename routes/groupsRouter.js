@@ -7,6 +7,8 @@ const {
   changeGroup,
   getGroups,
   getLengthOfGroupsCollection,
+  getNotesInGroup,
+  getLengthOfNotesInGroupCollection,
 } = require('../controllers/groupsController')
 
 const {
@@ -31,5 +33,13 @@ groupsRouter
   .get(getGroup)
   .delete(deleteGroup)
   .put(createGroupDataHandler({ optional: ['title', 'color'] }), changeGroup)
+
+groupsRouter
+  .route('/notes/list/:searchTitle')
+  .get(createRangeDataHandler(), getNotesInGroup)
+
+groupsRouter
+  .route('/notes/length/:searchTitle')
+  .get(getLengthOfNotesInGroupCollection)
 
 module.exports = groupsRouter
