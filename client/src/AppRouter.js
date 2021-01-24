@@ -4,6 +4,8 @@ import NavSideMenu from './components/NavSideMenu'
 import NotesPage from './pages/NotesPage'
 import GroupsPage from './pages/GroupsPage'
 import NotesInGroupPage from './pages/NotesInGroupPage'
+import AddNotePage from './pages/AddNotePage'
+import AddGroupPage from './pages/AddGroupPage'
 
 function AppRouter() {
   return (
@@ -11,6 +13,8 @@ function AppRouter() {
       <NavSideMenu>
         <Link to="/notes">Notes</Link>
         <Link to="/groups">Groups</Link>
+        <Link to="/add/note/">Add note</Link>
+        <Link to="/add/group/">Add group</Link>
       </NavSideMenu>
 
       <Switch>
@@ -25,6 +29,12 @@ function AppRouter() {
         </Route>
         <Route path="/groups/notes/:groupTitle">
           <NotesInGroupPage />
+        </Route>
+        <Route exact path="/add/note/">
+          <AddNotePage />
+        </Route>
+        <Route exact path="/add/group/">
+          <AddGroupPage />
         </Route>
       </Switch>
     </BrowserRouter>
