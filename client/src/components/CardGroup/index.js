@@ -12,6 +12,7 @@ function CardGroup(props) {
     loadingLimit: limit,
     range: { start, end },
     routeForContent,
+    cardClickHandler,
     cardType,
     param,
   } = props
@@ -31,7 +32,7 @@ function CardGroup(props) {
     return new Array(length).fill(null).map((_, i) => {
       const data = isReceived ? currentData[i] : null
 
-      return <Card {...{ data, error, type }} key={i} />
+      return <Card {...{ data, error, type, cardClickHandler }} key={i} />
     })
   }
 

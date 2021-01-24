@@ -5,14 +5,17 @@ import PropTypes from 'prop-types'
 import { Wrapper, Title, Date, CardContent } from './styled-components'
 
 function Card(props) {
-  const { data, error, type } = props
+  const { data, error, type, cardClickHandler } = props
   const isForNotes = type === 'forNotes'
 
   return (
     <Wrapper>
       <DataComponent {...{ data, error }}>
         {(data) => (
-          <CardContent inputColor={data?.color}>
+          <CardContent
+            inputColor={data?.color}
+            onClick={cardClickHandler ? () => cardClickHandler(data) : null}
+          >
             <Title>{data.title}</Title>
             {isForNotes && <Date>{DateHandler.formatDate(data.date)}</Date>}
           </CardContent>

@@ -9,7 +9,7 @@ import CardGroup from '../CardGroup'
 class GridOfCards extends React.Component {
   render() {
     const { routeForContent, loadingLimit: limit, param } = this.props
-    const url = `api/${routeForContent}/length/${param || ''}`
+    const url = `/api/${routeForContent}/length/${param || ''}`
 
     return (
       <>
