@@ -49,7 +49,8 @@ CardGroup.propTypes = {
     start: PropTypes.number.isRequired,
     end: PropTypes.number.isRequired,
   }),
-  routeForContent: PropTypes.oneOf(['groups', 'notes']).isRequired,
+  routeForContent: PropTypes.oneOf(['groups', 'notes', 'groups/notes'])
+    .isRequired,
 }
 
 export default CardGroup
