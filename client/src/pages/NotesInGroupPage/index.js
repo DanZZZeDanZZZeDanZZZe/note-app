@@ -8,7 +8,7 @@ function NotesInGroupPage() {
     <PageWrapper>
       <GridOfCards
         routeForContent="groups/notes"
-        cardType="notes"
+        cardType="forNotes"
         loadingLimit={5}
         param={groupTitle}
       />
