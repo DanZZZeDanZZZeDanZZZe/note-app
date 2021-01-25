@@ -1,4 +1,4 @@
-import { fadeInRight } from 'react-animations'
+import { fadeIn } from 'react-animations'
 import styled, { keyframes } from 'styled-components'
 import {
   eggplant,
@@ -53,7 +53,7 @@ const StyledForm = styled.form`
     grid-column-end: -1;
     text-align: right;
     color: ${maroonX11};
-    animation: ${keyframes(fadeInRight)} 0.3s ease-in-out;
+    animation: ${keyframes(fadeIn)} 0.3s ease-in-out;
   }
 
   & legend {
@@ -76,6 +76,14 @@ const StyledForm = styled.form`
     &:hover {
       cursor: pointer;
       background-color: ${eggplant};
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      &:hover {
+        cursor: auto;
+        background-color: ${oceanGreen};
+      }
     }
   }
 
