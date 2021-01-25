@@ -17,7 +17,7 @@ const CardContentForm = (props) => {
     <Formik
       initialValues={initialValues}
       validate={(values) => validate(values)}
-      onSubmit={(values, { setSubmitting }) => onSubmit(values, setSubmitting)}
+      onSubmit={(values, formik) => onSubmit(values, formik)}
     >
       {({
         values,
