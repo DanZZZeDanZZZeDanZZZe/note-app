@@ -12,10 +12,6 @@ const Wrapper = styled.main`
   box-sizing: border-box;
   width: 100%;
   height: 100vh;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background-color: ${oceanGreen};
 
   @media only screen and (max-width: ${smSize}) {
@@ -31,10 +27,11 @@ const Wrapper = styled.main`
 `
 const ContentSpace = styled.div`
   display: flex;
-  align-items: center;
   justify-content: center;
-  height: 100%;
-  min-width: 100%;
+  width: 100%;
+  min-height: 100%;
+  max-height: 100%;
+  overflow-y: auto;
   background-color: ${ghostWhite};
   box-shadow: ${materialShadow3};
 `

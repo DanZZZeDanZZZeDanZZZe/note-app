@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
-  height: 100%;
+  height: 100vh;
   width: 100%;
   display: flex;
   align-items: center;
@@ -15,6 +15,7 @@ const Grid = styled.div`
   gap: 1rem;
   padding: 1rem;
   height: 100%;
+  max-height: 100%;
   width: 100%;
 `
 

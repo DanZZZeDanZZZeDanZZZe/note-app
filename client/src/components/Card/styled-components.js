@@ -7,6 +7,7 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   height: 100%;
+  min-height: 12rem;
   width: 100%;
 `
 const CardContent = styled.div`
