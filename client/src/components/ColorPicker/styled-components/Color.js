@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { materialShadow1 } from '../../../css-сonstants/shadows'
 
-export default styled.div.attrs((props) => ({
+export default styled.button.attrs((props) => ({
   border: props.selected ? '2px solid white' : 'none',
 }))`
   background-color: ${(props) => props.inputColor};

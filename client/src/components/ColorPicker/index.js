@@ -25,50 +25,26 @@ const DEFAULT_COLORS = [
   '#607d8b',
 ]
 
-class ColorPicker extends React.Component {
-  colors = DEFAULT_COLORS
+function ColorPicker(props) {
+  const { initalColor } = props
+  const colors = DEFAULT_COLORS
+  return (
+    <Wrapper>
+      {colors.map((color, index) => {
+        const isSelected = initalColor === color
 
-  constructor(props) {
-    super(props)
-    this.setValue = props.setValue
-    this.state = {
-      activeIndex: null,
-    }
-  }
-
-  colorClickHandler(index) {
-    const activeIndex = this.state.activeIndex !== index ? index : null
-
-    this.setState({
-      ...this.state,
-      activeIndex,
-    })
-  }
-
-  componentDidUpdate(_, prevState) {
-    const currentIndex = this.state.activeIndex
-    const prevIndex = prevState.activeIndex
-
-    if (currentIndex !== prevIndex) {
-      const color = this.colors[this.state.activeIndex]
-      this.setValue(color)
-    }
-  }
-
-  render() {
-    return (
-      <Wrapper>
-        {this.colors.map((color, index) => (
+        return (
           <Color
             key={color}
             inputColor={color}
-            selected={this.state.activeIndex === index}
-            onClick={() => this.colorClickHandler(index)}
+            selected={isSelected}
+            onClick={() => props.setValue(isSelected ? null : color)}
+            type="button"
           />
-        ))}
-      </Wrapper>
-    )
-  }
+        )
+      })}
+    </Wrapper>
+  )
 }
 
 ColorPicker.propTypes = {
