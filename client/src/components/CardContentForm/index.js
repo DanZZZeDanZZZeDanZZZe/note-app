@@ -2,7 +2,6 @@ import React from 'react'
 import { Formik } from 'formik'
 import { StyledForm } from './styled-components'
 import PropTypes from 'prop-types'
-import isEmpty from '../../utils/isEmpty'
 
 const CardContentForm = (props) => {
   const {
@@ -13,6 +12,7 @@ const CardContentForm = (props) => {
     buttonText,
     legend,
   } = props
+
   return (
     <Formik
       initialValues={initialValues}
@@ -40,10 +40,7 @@ const CardContentForm = (props) => {
             isSubmitting,
             isValid,
           })}
-          <button
-            type="submit"
-            disabled={isSubmitting || !isValid || isEmpty(touched)}
-          >
+          <button type="submit" disabled={isSubmitting || !isValid}>
             {buttonText}
           </button>
         </StyledForm>
