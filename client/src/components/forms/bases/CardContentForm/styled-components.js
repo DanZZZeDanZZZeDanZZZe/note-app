@@ -5,9 +5,9 @@ import {
   ghostWhite,
   maroonX11,
   oceanGreen,
-} from '../../css-сonstants/colors'
-import { lgSize, smSize } from '../../css-сonstants/screen-breakpoints'
-import { materialShadow1 } from '../../css-сonstants/shadows'
+} from '../../../../css-сonstants/colors'
+import { lgSize, smSize } from '../../../../css-сonstants/screen-breakpoints'
+import { materialShadow1 } from '../../../../css-сonstants/shadows'
 
 const StyledForm = styled.form`
   display: flex;

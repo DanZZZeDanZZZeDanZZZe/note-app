@@ -1,5 +1,5 @@
 import React from 'react'
-import NoteContentForm from '../NoteContentForm'
+import NoteContentForm from '../contents/NoteContentForm'
 
 const AddNoteForm = () => {
   const onSubmit = (values, formik) => {

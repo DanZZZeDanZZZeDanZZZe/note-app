@@ -1,4 +1,4 @@
-import AddNoteForm from '../../components/AddNoteForm'
+import AddNoteForm from '../../components/forms/AddNoteForm'
 import PageWrapper from '../../components/PageWrapper'
 
 function AddNotePage() {

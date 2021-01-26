@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import CardContentForm from '../CardContentForm'
+import CardContentForm from '../../bases/CardContentForm'
 
 const NoteContentForm = (props) => {
   const validate = (values) => {
