@@ -18,9 +18,10 @@ const StyledForm = styled.form`
   height: 100%;
   padding-top: 5rem;
 
-  & textarea,
-  & input,
-  & select {
+  & > label > textarea,
+  & > label > input,
+  & > label > select,
+  & > label > div {
     grid-column: span 2;
     background-color: white;
     padding: 1rem;
@@ -29,9 +30,10 @@ const StyledForm = styled.form`
     border: none;
     box-sizing: border-box;
     box-shadow: ${materialShadow1};
+    grid-column: span 2;
   }
 
-  & label {
+  & > label {
     display: grid;
     grid: 1rem auto / 1fr auto;
     padding-top: 2rem;
@@ -39,16 +41,11 @@ const StyledForm = styled.form`
     grid-gap: 0.4rem;
   }
 
-  & input {
-    grid-column: span 2;
-  }
-
-  & textarea {
-    grid-column: span 2;
+  & > label > textarea {
     min-height: 10rem;
   }
 
-  & span {
+  & > label > span {
     grid-row-start: 1;
     grid-column-end: -1;
     text-align: right;
@@ -56,13 +53,13 @@ const StyledForm = styled.form`
     animation: ${keyframes(fadeIn)} 0.3s ease-in-out;
   }
 
-  & legend {
+  & > legend {
     font-size: 1.2rem;
     font-stretch: ultra-expanded;
     font-weight: 500;
   }
 
-  & button {
+  & > button {
     padding: 1rem;
     margin-top: 2.5rem;
     font-size: 1.1rem;
