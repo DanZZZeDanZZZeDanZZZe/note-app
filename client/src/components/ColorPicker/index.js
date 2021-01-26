@@ -45,9 +45,14 @@ class ColorPicker extends React.Component {
     })
   }
 
-  componentDidUpdate() {
-    const color = this.colors[this.state.activeIndex]
-    this.setValue(color)
+  componentDidUpdate(_, prevState) {
+    const currentIndex = this.state.activeIndex
+    const prevIndex = prevState.activeIndex
+
+    if (currentIndex !== prevIndex) {
+      const color = this.colors[this.state.activeIndex]
+      this.setValue(color)
+    }
   }
 
   render() {
