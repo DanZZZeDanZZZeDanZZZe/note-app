@@ -1,49 +1,41 @@
-import Card from '../Card'
 import DataLoader from '../DataLoader'
 import PropTypes from 'prop-types'
-import capitalize from '../../utils/capitalize'
+
+const ERROR_MESSAGE = "Retrieval data isn't array!"
 
 function CardGroup(props) {
-  const throwError = () => {
-    throw new Error("Retrieval data isn't array!")
-  }
-
   const {
     loadingLimit: limit,
     range: { start, end },
     routeForContent,
-    cardClickHandler,
-    cardType,
+    CardComponent,
     param,
   } = props
 
-  const type = cardType || `for${capitalize(routeForContent)}`
   const basename = `/api/${routeForContent}/list`
   const url = `${basename}/${param || ''}?start=${start}&limit=${limit}`
   const length = end - start + 1
 
-  const renderContent = (currentData, error) => {
-    let isReceived = false
-    if (currentData) {
-      if (!(currentData instanceof Array)) throwError()
-      isReceived = true
-    }
-
-    return new Array(length).fill(null).map((_, i) => {
-      const data = isReceived ? currentData[i] : null
-
-      return <Card {...{ data, error, type, cardClickHandler }} key={i} />
-    })
-  }
-
   return (
     <DataLoader {...{ url }}>
-      {(data, error) => renderContent(data, error)}
+      {(dataArr, error) => {
+        let isReceived = false
+        if (dataArr) {
+          if (!(dataArr instanceof Array)) throw new Error(ERROR_MESSAGE)
+          isReceived = true
+        }
+
+        return new Array(length).fill(null).map((_, i) => {
+          const data = isReceived ? dataArr[i] : null
+          return <CardComponent {...{ data, error }} key={i} />
+        })
+      }}
     </DataLoader>
   )
 }
 
 CardGroup.propTypes = {
+  CardComponent: PropTypes.elementType.isRequired,
   loadingLimit: PropTypes.number.isRequired,
   range: PropTypes.shape({
     start: PropTypes.number.isRequired,
