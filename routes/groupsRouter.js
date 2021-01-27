@@ -9,6 +9,7 @@ const {
   getLengthOfGroupsCollection,
   getNotesInGroup,
   getLengthOfNotesInGroupCollection,
+  getListOfGroupTitles,
 } = require('../controllers/groupsController')
 
 const {
@@ -27,6 +28,8 @@ groupsRouter
 groupsRouter.route('/list').get(createRangeDataHandler(), getGroups)
 
 groupsRouter.route('/length').get(getLengthOfGroupsCollection)
+
+groupsRouter.route('/list-of-titles').get(getListOfGroupTitles)
 
 groupsRouter
   .route('/:searchTitle')

@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import CardContentForm from '../../bases/CardContentForm'
+import DataLoadingComponent from '../../../DataLoadingComponent'
+import { Field } from 'formik'
 
 const NoteContentForm = (props) => {
   const validate = (values) => {
@@ -18,33 +20,47 @@ const NoteContentForm = (props) => {
   }
 
   return (
-    <CardContentForm {...{ ...props, validate }}>
-      {({ values, errors, touched, handleChange, handleBlur }) => (
-        <>
-          <label>
-            Title
-            <input
-              type="title"
-              name="title"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.title}
-            />
-            {errors.title && touched.title && <span>{errors.title}</span>}
-          </label>
-          <label>
-            Text
-            <textarea
-              name="text"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.text}
-            />
-            {errors.text && touched.text && <span>{errors.text}</span>}
-          </label>
-        </>
+    <DataLoadingComponent url="/api/groups/list-of-titles">
+      {(data) => (
+        <CardContentForm {...{ ...props, validate }}>
+          {({ values, errors, touched, handleChange, handleBlur }) => (
+            <>
+              <label>
+                Title
+                <input
+                  type="title"
+                  name="title"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.title}
+                />
+                {errors.title && touched.title && <span>{errors.title}</span>}
+              </label>
+              <label>
+                Text
+                <textarea
+                  name="text"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.text}
+                />
+                {errors.text && touched.text && <span>{errors.text}</span>}
+              </label>
+              <label>
+                Group
+                <Field name="group" as="select">
+                  {data.groupTitles.map((title, index) => (
+                    <option key={index} value={title}>
+                      {title}
+                    </option>
+                  ))}
+                </Field>
+              </label>
+            </>
+          )}
+        </CardContentForm>
       )}
-    </CardContentForm>
+    </DataLoadingComponent>
   )
 }
 

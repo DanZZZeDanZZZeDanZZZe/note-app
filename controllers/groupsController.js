@@ -137,3 +137,13 @@ exports.getLengthOfNotesInGroupCollection = async (req, res) => {
     resErrorMessage(res, e)
   }
 }
+
+exports.getListOfGroupTitles = async (req, res) => {
+  try {
+    const groupTitles = await Group.find({}).select('title')
+
+    res.status(200).json({ groupTitles: groupTitles.map(({ title }) => title) })
+  } catch (e) {
+    resErrorMessage(res, e)
+  }
+}

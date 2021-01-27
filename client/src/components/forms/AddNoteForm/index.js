@@ -9,6 +9,10 @@ const AddNoteForm = () => {
       date: new Date(Date.now()),
     }
 
+    if (values?.group) {
+      data.groupTitle = values.group
+    }
+
     fetch('/api/notes', {
       method: 'POST',
       headers: {
