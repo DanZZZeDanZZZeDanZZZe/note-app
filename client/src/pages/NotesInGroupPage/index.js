@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom'
+import NoteCard from '../../components/cards/NoteCard'
 import GridOfCards from '../../components/GridOfCards'
 import PageWrapper from '../../components/PageWrapper'
 
@@ -8,7 +9,7 @@ function NotesInGroupPage() {
     <PageWrapper>
       <GridOfCards
         routeForContent="groups/notes"
-        cardType="forNotes"
+        CardComponent={NoteCard}
         loadingLimit={5}
         param={groupTitle}
       />
