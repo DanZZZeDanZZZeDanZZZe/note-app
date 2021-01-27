@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 class DataLoader extends React.Component {
   constructor(props) {
@@ -35,6 +36,10 @@ class DataLoader extends React.Component {
 
     return this.props.children(data, error)
   }
+}
+
+DataLoader.propTypes = {
+  children: PropTypes.func.isRequired,
 }
 
 export default DataLoader

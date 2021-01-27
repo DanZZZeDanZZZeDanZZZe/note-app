@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types'
+
 import DataComponent from '../DataComponent'
 import DataLoader from '../DataLoader'
 
@@ -9,6 +11,11 @@ function DataLoadingComponent(props) {
       )}
     </DataLoader>
   )
+}
+
+DataLoadingComponent.propTypes = {
+  children: PropTypes.func.isRequired,
+  url: PropTypes.string.isRequired,
 }
 
 export default DataLoadingComponent
