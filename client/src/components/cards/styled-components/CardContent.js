@@ -6,14 +6,21 @@ const CardContent = styled.div`
   width: 100%;
   box-sizing: border-box;
   display: grid;
-  grid-template-rows: 1fr 4fr 1fr;
+  grid-template-rows: 1.5rem 1fr 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(max-content, 20%));
+  place-content: center;
   place-items: center;
   padding: 1rem;
   background-color: ${(props) => props.inputColor || 'white'};
   box-shadow: ${materialShadow1};
 
-  &:hover {
-    cursor: pointer;
+  & > button {
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+
+  &:hover > button {
+    opacity: 1;
   }
 `
 
