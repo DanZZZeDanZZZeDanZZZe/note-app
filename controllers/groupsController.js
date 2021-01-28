@@ -63,7 +63,7 @@ exports.deleteGroup = async (req, res) => {
     const { searchTitle } = req.params
     if (!searchTitle) throw new Error('Request does not contain title')
 
-    await Group.remove({ searchTitle })
+    await Group.deleteOne({ title: searchTitle })
 
     res.status(200).json({ message: 'Successful deletion' })
   } catch (e) {
