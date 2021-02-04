@@ -1,17 +1,20 @@
+import { useParams } from 'react-router-dom'
 import NoteCard from '../../components/cards/NoteCard'
 import GridOfCards from '../../components/GridOfCards'
 import PageWrapper from '../../components/PageWrapper'
 
-function NotesPage() {
+function NotesInGroupPage() {
+  const { groupTitle } = useParams()
   return (
     <PageWrapper>
       <GridOfCards
-        routeForContent="notes"
-        loadingLimit={5}
+        routeForContent="groups/notes"
         CardComponent={NoteCard}
+        loadingLimit={5}
+        param={groupTitle}
       />
     </PageWrapper>
   )
 }
 
-export default NotesPage
+export default NotesInGroupPage

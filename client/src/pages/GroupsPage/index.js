@@ -1,9 +1,15 @@
-import PageWrapper from "../../components/PageWrapper";
+import GroupCard from '../../components/cards/GroupCard'
+import GridOfCards from '../../components/GridOfCards'
+import PageWrapper from '../../components/PageWrapper'
 
 function GroupsPage() {
   return (
     <PageWrapper>
-      <h3>goups</h3>
+      <GridOfCards
+        routeForContent="groups"
+        loadingLimit={5}
+        CardComponent={GroupCard}
+      />
     </PageWrapper>
   )
 }

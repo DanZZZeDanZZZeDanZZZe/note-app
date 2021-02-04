@@ -1,36 +1,15 @@
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  Redirect
-} from "react-router-dom";
+import AppRouter from './AppRouter'
+import DateHandler from './utility-classes/DateHandler'
 
-import NavSideMenu from "./components/NavSideMenu";
-import NotesPage from "./pages/NotesPage";
-import GroupsPage from "./pages/GroupsPage";
+DateHandler.init('en-US', {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+})
 
 function App() {
-  return (
-    <Router>
-      <NavSideMenu>
-        <Link to="/notes">Notes</Link>
-        <Link to="/goups">Groups</Link>
-      </NavSideMenu>
-
-      <Switch>
-        <Route path="/" exact>
-          <Redirect to="/notes" />
-        </Route>
-        <Route path="/notes">
-          <NotesPage/>
-        </Route>
-        <Route path="/goups">
-          <GroupsPage/>
-        </Route>
-      </Switch>
-    </Router>
-  )
+  return <AppRouter />
 }
 
 export default App
