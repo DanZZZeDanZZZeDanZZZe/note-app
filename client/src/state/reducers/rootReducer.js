@@ -1,5 +1,9 @@
 import { combineReducers } from 'redux'
 
-const rootReducer = combineReducers({})
+import notesReducer from './notesReducer'
+
+const rootReducer = combineReducers({
+  notes: notesReducer,
+})
 
 export default rootReducer
