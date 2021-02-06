@@ -1,3 +1,4 @@
+import actionTypes from '../actionTypes'
 import notesReducer from './notesReducer'
 
 describe('notes reducer', () => {
@@ -10,45 +11,35 @@ describe('notes reducer', () => {
     })
   })
 
-  // it('should handle ADD_TODO', () => {
-  //   expect(
-  //     reducer([], {
-  //       type: types.ADD_TODO,
-  //       text: 'Run the tests'
-  //     })
-  //   ).toEqual([
-  //     {
-  //       text: 'Run the tests',
-  //       completed: false,
-  //       id: 0
-  //     }
-  //   ])
+  it('should handle SET_THE_COUNT_OF_NOTES', () => {
+    expect(
+      notesReducer(undefined, {
+        type: actionTypes.SET_THE_COUNT_OF_NOTES,
+        payload: {
+          count: 34,
+        },
+      })
+    ).toEqual({
+      listOfNotes: {
+        count: 34,
+        errorMessage: null,
+      },
+    })
+  })
 
-  //   expect(
-  //     reducer(
-  //       [
-  //         {
-  //           text: 'Use Redux',
-  //           completed: false,
-  //           id: 0
-  //         }
-  //       ],
-  //       {
-  //         type: types.ADD_TODO,
-  //         text: 'Run the tests'
-  //       }
-  //     )
-  //   ).toEqual([
-  //     {
-  //       text: 'Run the tests',
-  //       completed: false,
-  //       id: 1
-  //     },
-  //     {
-  //       text: 'Use Redux',
-  //       completed: false,
-  //       id: 0
-  //     }
-  //   ])
-  // })
+  it('should handle SET_ERROR_MESSAGE_FOR_LIST_OF_NOTES', () => {
+    expect(
+      notesReducer(undefined, {
+        type: actionTypes.SET_ERROR_MESSAGE_FOR_LIST_OF_NOTES,
+        payload: {
+          errorMessage: 'Error message!',
+        },
+      })
+    ).toEqual({
+      listOfNotes: {
+        count: null,
+        errorMessage: 'Error message!',
+      },
+    })
+  })
 })
