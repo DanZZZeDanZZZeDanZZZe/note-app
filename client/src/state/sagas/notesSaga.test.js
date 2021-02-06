@@ -1,4 +1,4 @@
-import { put, take } from 'redux-saga/effects'
+import { put } from 'redux-saga/effects'
 import {
   setErrorMessageForListOfNotes,
   setTheCountOfNotes,
