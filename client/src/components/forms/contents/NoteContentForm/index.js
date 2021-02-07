@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 
 import CardContentForm from '../../bases/CardContentForm'
-import DataLoadingComponent from '../../../DataLoadingComponent'
 import { Field } from 'formik'
+import DataComponent from '../../../DataComponent'
+import Api from '../../../../utility-classes/Api'
 
 const NoteContentForm = (props) => {
   const validate = (values) => {
@@ -19,8 +20,13 @@ const NoteContentForm = (props) => {
     return errors
   }
 
+  const [state, setState] = useState()
+  useEffect(() => {
+    Api.getListOfGroupTitles().then((res) => setState(res))
+  }, [])
+
   return (
-    <DataLoadingComponent url="/api/groups/list-of-titles">
+    <DataComponent data={state}>
       {(data) => (
         <CardContentForm {...{ ...props, validate }}>
           {({ values, errors, touched, handleChange, handleBlur }) => (
@@ -60,7 +66,7 @@ const NoteContentForm = (props) => {
           )}
         </CardContentForm>
       )}
-    </DataLoadingComponent>
+    </DataComponent>
   )
 }
 

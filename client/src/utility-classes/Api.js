@@ -72,6 +72,10 @@ class Api {
     })
   }
 
+  static async getListOfGroupTitles() {
+    return await Api.get('groups/list-of-titles')
+  }
+
   static async delete(urlPart) {
     return await Api.fetch(urlPart, 'DELETE')
   }
