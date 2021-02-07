@@ -14,14 +14,23 @@ class Api {
     new Api(apiBase)
   }
 
-  static async get(urlPart) {
+  static async fetch(urlPart, method, data) {
     const url = `/${this.instance.base}/${urlPart}`
-    return await fetch(url, { headers: this.jsonContentHeader }).then((res) => {
+
+    const params = { headers: this.jsonContentHeader, method }
+    if (method === 'POST' || method === 'PUT')
+      params.body = JSON.stringify(data)
+
+    return await fetch(url, params).then(async (res) => {
       if (!res.ok) {
         throw new Error(`Data retrieval error. Status: ${res.status}`)
       }
-      return res.json()
+      return await res.json()
     })
+  }
+
+  static async get(urlPart) {
+    return await Api.fetch(urlPart, 'GET')
   }
 
   static async getLength(routeForContent, param) {
@@ -38,6 +47,70 @@ class Api {
 
   static async getLengthOfNotesListInGroup(group) {
     return await Api.getLength('groups/notes', group)
+  }
+
+  static async getList({ entity, start, param, limit }) {
+    return await Api.get(
+      `${entity}/list/${param || ''}?start=${start}&limit=${limit}`
+    )
+  }
+
+  static async getListOfNotes(start, limit) {
+    return await Api.getList({ entity: 'notes', start, limit, param: null })
+  }
+
+  static async getListOfGroups(start, limit) {
+    return await Api.getList({ entity: 'groups', start, limit, param: null })
+  }
+
+  static async getListOfNotesInGroup(param, start, limit) {
+    return await Api.getList({
+      entity: 'groups/notes',
+      start,
+      limit,
+      param,
+    })
+  }
+
+  static async delete(urlPart) {
+    return await Api.fetch(urlPart, 'DELETE')
+  }
+
+  static async deleteEntity(entity, param) {
+    return await Api.fetch(`${entity}/${param}`, 'DELETE')
+  }
+
+  static async deleteNote(param) {
+    return await Api.deleteEntity('notes', param)
+  }
+
+  static async deleteGroup(param) {
+    return await Api.deleteEntity('groups', param)
+  }
+
+  static async post(urlPart, data) {
+    return await Api.fetch(urlPart, 'POST', data)
+  }
+
+  static async put(urlPart, data) {
+    return await Api.fetch(urlPart, 'PUT', data)
+  }
+
+  static async addNewEntity(entity, data) {
+    return await Api.post(entity, data).then((res) => {
+      const { message } = res
+      if (message) {
+        throw new Error(message)
+      }
+    })
+  }
+
+  static async addNewNote(data) {
+    return await Api.addNewEntity('notes', data)
+  }
+
+  static async addNewGroup(data) {
+    return await Api.addNewEntity('groups', data)
   }
 }
 

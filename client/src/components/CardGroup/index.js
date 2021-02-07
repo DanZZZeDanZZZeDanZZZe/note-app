@@ -1,7 +1,17 @@
 import DataLoader from '../DataLoader'
 import PropTypes from 'prop-types'
+import { useEffect, useState } from 'react'
+import Api from '../../utility-classes/Api'
 
-const ERROR_MESSAGE = "Retrieval data isn't array!"
+function getApiMethod(type, param, start, limit) {
+  const methods = {
+    groups: async () => await Api.getListOfGroups(start, limit),
+    notes: async () => await Api.getListOfNotes(start, limit),
+    'groups/notes': async () =>
+      await Api.getListOfNotesInGroup(param, start, limit),
+  }
+  return methods[type]
+}
 
 function CardGroup(props) {
   const {
@@ -12,25 +22,20 @@ function CardGroup(props) {
     param,
   } = props
 
-  const basename = `/api/${routeForContent}/list`
-  const url = `${basename}/${param || ''}?start=${start}&limit=${limit}`
   const length = end - start + 1
+  const [state, setState] = useState(new Array(length).fill(null))
+
+  useEffect(() => {
+    const getCards = getApiMethod(routeForContent, param, start, limit)
+    getCards().then((cards) => setState(cards))
+  }, [routeForContent, param, start, limit])
 
   return (
-    <DataLoader {...{ url }}>
-      {(dataArr, error) => {
-        let isReceived = false
-        if (dataArr) {
-          if (!(dataArr instanceof Array)) throw new Error(ERROR_MESSAGE)
-          isReceived = true
-        }
-
-        return new Array(length).fill(null).map((_, i) => {
-          const data = isReceived ? dataArr[i] : null
-          return <CardComponent {...{ data, error }} key={i} />
-        })
-      }}
-    </DataLoader>
+    <>
+      {state.map((data, index) => (
+        <CardComponent data={data} key={index} />
+      ))}
+    </>
   )
 }
 
