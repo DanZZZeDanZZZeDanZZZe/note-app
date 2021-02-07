@@ -15,7 +15,7 @@ class Api {
   }
 
   static async get(urlPart) {
-    const url = `${this.instance.base}/${urlPart}`
+    const url = `/${this.instance.base}/${urlPart}`
     return await fetch(url, { headers: this.jsonContentHeader }).then((res) => {
       if (!res.ok) {
         throw new Error(`Data retrieval error. Status: ${res.status}`)
@@ -26,6 +26,18 @@ class Api {
 
   static async getLength(routeForContent, param) {
     return await Api.get(`${routeForContent}/length/${param || ''}`)
+  }
+
+  static async getLengthOfGroupsList() {
+    return await Api.getLength('groups')
+  }
+
+  static async getLengthOfNotesList() {
+    return await Api.getLength('notes')
+  }
+
+  static async getLengthOfNotesListInGroup(group) {
+    return await Api.getLength('groups/notes', group)
   }
 }
 

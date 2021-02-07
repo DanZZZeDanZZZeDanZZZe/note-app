@@ -9,14 +9,21 @@ import actionTypes from '../actionTypes'
 
 export function* getTheCountOfNotesAsync(action) {
   try {
-    const res = yield call(Api.getLength, 'notes', action?.param)
-    if (res?.count) {
-      yield put(setTheCountOfNotes(res.count))
+    const api = action.payload?.containingGroup
+      ? Api.getLengthOfNotesListInGroup
+      : Api.getLengthOfNotesList
+
+    const res = yield call(api, action.payload?.containingGroup)
+
+    if (res?.count || res?.count === 0) {
+      yield put(setTheCountOfNotes(res.count, action.payload?.containingGroup))
     } else {
       throw new Error(res?.message ?? 'Invalid format of received data!')
     }
   } catch (error) {
-    yield put(setErrorMessageForListOfNotes(error.message))
+    yield put(
+      setErrorMessageForListOfNotes(error.message, action.payload?.param)
+    )
   }
 }
 

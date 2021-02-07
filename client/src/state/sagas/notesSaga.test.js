@@ -7,7 +7,7 @@ import { getTheCountOfNotesAsync } from './notesSaga'
 
 describe('getTheCountOfNotesAsync', () => {
   it('should return the error message action', () => {
-    const gen = getTheCountOfNotesAsync()
+    const gen = getTheCountOfNotesAsync({ payload: {} })
     gen.next()
 
     expect(gen.next({}).value).toEqual(
@@ -16,7 +16,7 @@ describe('getTheCountOfNotesAsync', () => {
   })
 
   it('should return action with the received error message', () => {
-    const gen = getTheCountOfNotesAsync()
+    const gen = getTheCountOfNotesAsync({ payload: {} })
     gen.next()
     const message = 'ERROR!!!'
     expect(gen.next({ message }).value).toEqual(
@@ -25,7 +25,7 @@ describe('getTheCountOfNotesAsync', () => {
   })
 
   it('should return set the count of notes action', () => {
-    const gen = getTheCountOfNotesAsync()
+    const gen = getTheCountOfNotesAsync({ payload: {} })
     gen.next()
     const count = 25
 

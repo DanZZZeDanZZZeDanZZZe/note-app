@@ -9,7 +9,7 @@ import actionTypes from '../actionTypes'
 
 export function* getTheCountOfGroupsAsync(action) {
   try {
-    const res = yield call(Api.getLength, 'groups', action?.param)
+    const res = yield call(Api.getLengthOfGroupsList)
     if (res?.count) {
       yield put(setTheCountOfGroups(res.count))
     } else {
