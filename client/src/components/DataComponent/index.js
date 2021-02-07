@@ -5,7 +5,11 @@ import Spinner from '../Spinner'
 
 function DataComponent(props) {
   if (!props.error) {
-    return props.data ? props.children(props.data) : <Spinner />
+    return props.data !== null && props.data !== undefined ? (
+      props.children(props.data)
+    ) : (
+      <Spinner />
+    )
   }
   return <p>{props.error.message}</p>
 }
