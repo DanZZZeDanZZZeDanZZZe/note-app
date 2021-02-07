@@ -1,3 +1,4 @@
+import React from 'react'
 import { useParams } from 'react-router-dom'
 import NoteCard from '../../components/cards/NoteCard'
 import GridOfCards from '../../components/GridOfCards'

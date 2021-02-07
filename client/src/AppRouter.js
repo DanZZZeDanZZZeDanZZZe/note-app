@@ -1,4 +1,5 @@
 import { Switch, Route, Link, Redirect, BrowserRouter } from 'react-router-dom'
+import React from 'react'
 
 import NavSideMenu from './components/NavSideMenu'
 import NotesPage from './pages/NotesPage'

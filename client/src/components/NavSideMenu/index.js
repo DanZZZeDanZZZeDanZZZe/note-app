@@ -1,5 +1,6 @@
-import SideMenu from "../SideMenu"
-import { Nav } from "./styled-components"
+import React from 'react'
+import SideMenu from '../SideMenu'
+import { Nav } from './styled-components'
 
 function NavSideMenu(props) {
   return (
@@ -7,10 +8,8 @@ function NavSideMenu(props) {
       <Nav>
         <ul>
           {props.children.map((link, index) => (
-            <li key={index}>
-              {link}
-            </li>
-          ))} 
+            <li key={index}>{link}</li>
+          ))}
         </ul>
       </Nav>
     </SideMenu>
@@ -18,4 +17,3 @@ function NavSideMenu(props) {
 }
 
 export default NavSideMenu
-

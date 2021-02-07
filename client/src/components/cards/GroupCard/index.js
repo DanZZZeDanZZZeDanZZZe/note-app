@@ -1,3 +1,4 @@
+import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { MdDelete, MdFolder } from 'react-icons/md'
 
@@ -8,6 +9,7 @@ import {
   CardTitle,
   CardButton,
 } from '../styled-components'
+import Api from '../../../utility-classes/Api'
 
 const CONFIRM_MESSAGE = 'Are you sure you want to delete the item?'
 
@@ -17,7 +19,7 @@ function GroupCard(props) {
   const onOpeningHandler = (data) => history.push(`/groups/notes/${data.title}`)
   const onDelitingHandler = (data) => {
     if (window.confirm(CONFIRM_MESSAGE)) {
-      fetch(`/api/groups/${data.title}`, { method: 'DELETE' }).then(() => {
+      Api.deleteGroup(data.title).then(() => {
         window.location.reload()
       })
     }

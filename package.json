@@ -8,7 +8,8 @@
     "start:dev:server": "NODE_ENV=development nodemon server.js",
     "start:dev": "concurrently --raw \"npm run start:dev:*\"",
     "start:prod": "NODE_ENV=production nodemon server.js",
-    "build:client": "npm run build --prefix client"
+    "build:client": "npm run build --prefix client",
+    "test:client": "npm run test --prefix client"
   },
   "keywords": [
     "js",

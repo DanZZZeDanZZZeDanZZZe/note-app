@@ -1,3 +1,4 @@
+import React from 'react'
 import { MdDelete } from 'react-icons/md'
 
 import DateHandler from '../../../utility-classes/DateHandler'
@@ -10,6 +11,7 @@ import {
   CardTitle,
   CardButton,
 } from '../styled-components'
+import Api from '../../../utility-classes/Api'
 
 const CONFIRM_MESSAGE = 'Are you sure you want to delete the item?'
 
@@ -17,7 +19,7 @@ function NoteCard(props) {
   const { data, error } = props
   const onDelitingHandle = (data) => {
     if (window.confirm(CONFIRM_MESSAGE)) {
-      fetch(`/api/notes/${data._id}`, { method: 'DELETE' }).then(() => {
+      Api.deleteNote(data._id).then(() => {
         window.location.reload()
       })
     }

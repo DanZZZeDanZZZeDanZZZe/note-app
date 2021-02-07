@@ -1,4 +1,5 @@
 import React from 'react'
+import Api from '../../../utility-classes/Api'
 import NoteContentForm from '../contents/NoteContentForm'
 
 const AddNoteForm = () => {
@@ -13,18 +14,8 @@ const AddNoteForm = () => {
       data.groupTitle = values.group
     }
 
-    fetch('/api/notes', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-      .then(async (res) => {
-        const { message } = await res.json()
-        if (!res.ok) {
-          throw new Error(message)
-        }
+    Api.addNewNote(data)
+      .then(() => {
         formik.resetForm()
       })
       .catch(({ message }) => {

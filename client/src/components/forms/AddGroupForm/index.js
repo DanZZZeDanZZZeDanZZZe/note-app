@@ -1,4 +1,5 @@
 import React from 'react'
+import Api from '../../../utility-classes/Api'
 import GroupContentForm from '../contents/GroupContentForm'
 
 const AddGroupForm = () => {
@@ -12,18 +13,8 @@ const AddGroupForm = () => {
       data.color = values.color
     }
 
-    fetch('/api/groups', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-      .then(async (res) => {
-        const { message } = await res.json()
-        if (!res.ok) {
-          throw new Error(message)
-        }
+    Api.addNewGroup(data)
+      .then(() => {
         formik.resetForm()
       })
       .catch(({ message }) => {
