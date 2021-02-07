@@ -1,3 +1,4 @@
+import React from 'react'
 import GroupCard from '../../components/cards/GroupCard'
 import GridOfCards from '../../components/GridOfCards'
 import PageWrapper from '../../components/PageWrapper'

@@ -1,3 +1,4 @@
+import React from 'react'
 import AddNoteForm from '../../components/forms/AddNoteForm'
 import PageWrapper from '../../components/PageWrapper'
 

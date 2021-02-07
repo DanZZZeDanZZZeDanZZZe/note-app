@@ -1,4 +1,4 @@
-import DataLoader from '../DataLoader'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { useEffect, useState } from 'react'
 import Api from '../../utility-classes/Api'

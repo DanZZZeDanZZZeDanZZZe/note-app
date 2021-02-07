@@ -1,11 +1,10 @@
-import { ContentSpace, Wrapper } from "./styled-components"
+import React from 'react'
+import { ContentSpace, Wrapper } from './styled-components'
 
 function PageWrapper(props) {
   return (
     <Wrapper>
-      <ContentSpace>
-        {props.children}
-      </ContentSpace>
+      <ContentSpace>{props.children}</ContentSpace>
     </Wrapper>
   )
 }
