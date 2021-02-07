@@ -20,11 +20,11 @@ export function* getTheCountOfNotesAsync(action) {
   }
 }
 
-function* noteSaga() {
+function* notesSaga() {
   yield takeEvery(
     actionTypes.GET_THE_COUNT_OF_NOTES_ASYNC,
     getTheCountOfNotesAsync
   )
 }
 
-export default noteSaga
+export default notesSaga

@@ -1,5 +1,9 @@
-import noteSaga from './notesSaga'
+import notesSaga from './notesSaga'
+import groupsSaga from './groupsSaga'
 
-function* rootSaga() {}
+function* rootSaga() {
+  yield* notesSaga()
+  yield* groupsSaga()
+}
 
 export default rootSaga
