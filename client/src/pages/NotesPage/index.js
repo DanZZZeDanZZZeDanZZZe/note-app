@@ -1,17 +1,17 @@
 import React from 'react'
 import NoteCard from '../../components/cards/NoteCard'
 import GridOfCards from '../../components/GridOfCards'
-import PageWrapper from '../../components/PageWrapper'
+import PageBase from '../PageBase'
 
 function NotesPage() {
   return (
-    <PageWrapper>
+    <PageBase>
       <GridOfCards
         routeForContent="notes"
         loadingLimit={5}
         CardComponent={NoteCard}
       />
-    </PageWrapper>
+    </PageBase>
   )
 }
 

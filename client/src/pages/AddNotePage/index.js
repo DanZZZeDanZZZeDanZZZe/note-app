@@ -1,12 +1,12 @@
 import React from 'react'
 import AddNoteForm from '../../components/forms/AddNoteForm'
-import PageWrapper from '../../components/PageWrapper'
+import PageBase from '../PageBase'
 
 function AddNotePage() {
   return (
-    <PageWrapper>
+    <PageBase>
       <AddNoteForm />
-    </PageWrapper>
+    </PageBase>
   )
 }
 

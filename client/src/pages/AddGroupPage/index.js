@@ -1,12 +1,12 @@
 import React from 'react'
-import PageWrapper from '../../components/PageWrapper'
 import AddGroupForm from '../../components/forms/AddGroupForm'
+import PageBase from '../PageBase'
 
 function AddGroupPage() {
   return (
-    <PageWrapper>
+    <PageBase>
       <AddGroupForm />
-    </PageWrapper>
+    </PageBase>
   )
 }
 

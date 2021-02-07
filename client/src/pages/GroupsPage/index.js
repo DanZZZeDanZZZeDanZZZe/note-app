@@ -1,17 +1,17 @@
 import React from 'react'
 import GroupCard from '../../components/cards/GroupCard'
 import GridOfCards from '../../components/GridOfCards'
-import PageWrapper from '../../components/PageWrapper'
+import PageBase from '../PageBase'
 
 function GroupsPage() {
   return (
-    <PageWrapper>
+    <PageBase>
       <GridOfCards
         routeForContent="groups"
         loadingLimit={5}
         CardComponent={GroupCard}
       />
-    </PageWrapper>
+    </PageBase>
   )
 }
 
